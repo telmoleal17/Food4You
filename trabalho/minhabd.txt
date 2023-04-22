@@ -1,0 +1,58 @@
+USE lab
+CREATE TABLE Utilizador(
+	nome				VARCHAR(35) NOT NULL,
+	email				VARCHAR(35) NOT NULL,
+	username			VARCHAR(20) PRIMARY KEY NOT NULL,
+	pass_word			VARCHAR(20) NOT NULL,
+	foto				VARCHAR(50),
+	ContaConfirmada		BIT DEFAULT(0) NOT NULL,
+);
+
+USE lab
+CREATE TABLE Cliente(
+	Username				VARCHAR(20) PRIMARY KEY  NOT NULL,
+);
+
+USE lab
+CREATE TABLE Administrador(
+	Username	VARCHAR(20) PRIMARY KEY NOT NULL,
+	
+);
+
+USE lab
+CREATE TABLE Restaurante(
+	Username				VARCHAR(20) PRIMARY KEY NOT NULL,
+    	Nome					VARCHAR(35) NOT NULL,
+	morada					VARCHAR(50) NOT NULL,				
+	telefone				INT NOT NULL,
+	gps						VARCHAR(50) NOT NULL,
+	horario					VARCHAR(100) NOT NULL,
+	Dia_Descanso			VARCHAR(25) NOT NULL,
+	tipo_servico			VARCHAR(50) NOT NULL,
+	Foto					Varchar(50) NOT NULL,
+	QuemAprovou				Varchar(20),
+	FOREIGN KEY (Username) references Utilizador(username),
+
+);
+
+
+
+USE lab
+CREATE TABLE Bloquear(
+	Username_Administrador	VARCHAR(20) NOT NULL,
+	Username_Utilizador		VARCHAR(20) NOT NULL,
+	motivo					VARCHAR(50) NOT NULL,
+	DataBloqueio			DATE NOT NULL,
+	PRIMARY KEY(Username_Utilizador,DataBloqueio),
+	FOREIGN KEY (Username_Administrador) references Administrador(Username),
+	FOREIGN KEY (Username_Utilizador) references Utilizador(username),
+);
+
+USE lab
+CREATE TABLE Prato_Dia(
+	ID			INTEGER NOT NULL IDENTITY,
+	Nome		VARCHAR(35) NOT NULL,
+	tipo		VARCHAR(15) NOT NULL,
+	PRIMARY KEY(ID),
+);
+

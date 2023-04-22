@@ -1,0 +1,50 @@
+
+
+USE lab
+CREATE TABLE Prato_Dia(
+	preco		FLOAT NOT NULL,
+	descricao	VARCHAR(100) NOT NULL,
+	foto		VARCHAR(50),
+);
+
+CREATE TABLE PratosFavoritos(
+	UsernameCliente			VARCHAR(20)  NOT NULL,
+	Id_Prato				INT PRIMARY KEY NOT NULL,
+);
+
+
+
+CREATE TABLE RestaurantesFavoritos(
+	UsernameCliente				VARCHAR(20)  NOT NULL,
+	UsernameRestaurante			VARCHAR(20) PRIMARY KEY  NOT NULL,
+);
+
+USE lab
+CREATE TABLE Avaliar_restaurates(
+	Username_Restaurante	VARCHAR(20)  NOT NULL,
+	Username_Cliente		VARCHAR(20)  NOT NULL,
+	avaliacao		INTEGER,
+	comentario		VARCHAR(50),
+	PRIMARY KEY(Username_Restaurante,Username_Cliente),
+);
+
+USE lab
+CREATE TABLE Avaliar_pratos(
+	Id_prato	INT  NOT NULL,
+	Username_Cliente		VARCHAR(20)  NOT NULL,
+	avaliacao INTEGER,
+	comentario VARCHAR(50),
+	PRIMARY KEY(Username_Cliente,Id_prato),
+	
+);
+
+USE lab
+CREATE TABLE Possuir(
+	ID_Prato				INT NOT NULL,
+	Username_Restaurante	VARCHAR(20) NOT NULL,
+	Data_PratoDia			DATE NOT NULL,
+	PRIMARY KEY(ID_Prato,Username_Restaurante),
+);
+
+
+
